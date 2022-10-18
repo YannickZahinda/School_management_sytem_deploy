@@ -1,0 +1,60 @@
+<div class="main">
+    <header>
+        <div class="navbar bg-dark text-light">
+          <div>
+          <% if user_signed_in? %>
+          <div class="p-2">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTSLU5_eUUGBfxfxRd4IquPiEwLbt4E_6RYMw&usqp=CAU" class="user-image" alt="user-pic"> <strong style="list-style-type: none;"> You're signed in as : <%= current_user.email %></strong>
+          </div>
+          <% end %>
+          </div>
+        </div>
+        <nav class="navbar navbar-expand-lg bg-light">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">SCHOLARLY</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <% if user_signed_in?%>
+                    <li class="nav-item">
+                      <%= link_to "Dashboard", dashboard_path, class: "nav-link active"%>
+                    </li>
+                  <% end %>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">About us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="#"><%= link_to "Teachers", teachers_path, class: "nav-link"%></a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href = "mailto:caleblico@gmail.com?subject = Feedback&body = Message">Mail us</a>
+                  </li>
+                  <li class="nav-item">
+                    <a href=""><%= link_to 'Students', students_path, class: "nav-link"%></a>
+                  </li>
+                </ul>
+                <% if user_signed_in? %>
+                  <%= link_to 'Edit profile', edit_user_registration_path, class: "nav-link btn btn-outline-success m-2 p-2"%>
+                <% else %>
+                  <%= link_to 'Sign up', new_user_registration_path, class: "nav-link btn btn-outline-success m-2 p-2"%>
+                  <%= link_to 'Sign in', new_user_session_path, class: "nav-link btn btn-outline-success m-2 p-2"%>
+                <% end %>
+              </div>
+            </div>
+          </nav>
+    </header>
+    <main>
+      <div class="p-5" style="background-image: url('https://www.timeplan.com/wp-content/uploads/2018/12/teacher-whiteboard.jpg'); height: 500px; background-size: cover;">
+        <p class="text-dark">Meet one of the best school in DRC</p>
+        <p class="h1 text-dark">Choose the righ theme <br> for education</p>
+        <%= link_to "Apply as student", new_student_path(), class: 'btn btn-secondary text-light outline-light p-3 mb-5' %>
+        <div>
+           <%=link_to "Comment your feedback here", comments_path(), class: "text-primary pt-5" %>
+        <div>
+        </div>
+      </div>
+      </div>
+    </main>
+</div>
